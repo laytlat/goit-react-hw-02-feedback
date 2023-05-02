@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 
 import {
   ButtonsContainer,
-  ButtonsTitle,
   ButtonsList,
   ButtonsListItem,
   Button,
@@ -15,7 +14,6 @@ export function FeedbackBtns({
 }) {
   return (
     <ButtonsContainer>
-      <ButtonsTitle>Please leave your feedback</ButtonsTitle>
       <ButtonsList>
         <ButtonsListItem>
           <Button

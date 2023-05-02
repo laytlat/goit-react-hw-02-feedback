@@ -7,12 +7,6 @@ export const StatisticsContainer = styled.div`
 
   flex-direction: column;
   gap: 40px;
-
-  margin-top: 40px;
-`;
-export const StatisticsTitle = styled.h2`
-  font-weight: 700;
-  font-size: 40px;
 `;
 
 export const StatisticsList = styled.ul`

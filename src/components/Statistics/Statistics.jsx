@@ -1,30 +1,48 @@
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Notification } from 'components/Notification/Notification';
 
 import {
   StatisticsContainer,
-  StatisticsTitle,
   StatisticsList,
   StatisticsListItem,
   StatisticsText,
 } from './Statistics.styled';
 
-export function Statistics({ goodFeedbacks, neutralFeedbacks, badFeedbacks }) {
-  return (
-    <StatisticsContainer>
-      <StatisticsTitle>Statistics</StatisticsTitle>
-      <StatisticsList>
-        <StatisticsListItem>
-          <StatisticsText>good: {goodFeedbacks}</StatisticsText>
-        </StatisticsListItem>
-        <StatisticsListItem>
-          <StatisticsText>neutral: {neutralFeedbacks}</StatisticsText>
-        </StatisticsListItem>
-        <StatisticsListItem>
-          <StatisticsText>bad: {badFeedbacks}</StatisticsText>
-        </StatisticsListItem>
-      </StatisticsList>
-    </StatisticsContainer>
-  );
+export class Statistics extends Component {
+  render() {
+    const {
+      goodFeedbacks,
+      neutralFeedbacks,
+      badFeedbacks,
+      totalFeedbacks,
+      positiveFeedbackPercentage,
+    } = this.props;
+
+    return (
+      <StatisticsContainer>
+        <StatisticsList>
+          <StatisticsListItem>
+            <StatisticsText>Good: {goodFeedbacks}</StatisticsText>
+          </StatisticsListItem>
+          <StatisticsListItem>
+            <StatisticsText>Neutral: {neutralFeedbacks}</StatisticsText>
+          </StatisticsListItem>
+          <StatisticsListItem>
+            <StatisticsText>Bad: {badFeedbacks}</StatisticsText>
+          </StatisticsListItem>
+          <StatisticsListItem>
+            <StatisticsText>Total: {totalFeedbacks}</StatisticsText>
+          </StatisticsListItem>
+          <StatisticsListItem>
+            <StatisticsText>
+              Positive feedback: {positiveFeedbackPercentage} %
+            </StatisticsText>
+          </StatisticsListItem>
+        </StatisticsList>
+      </StatisticsContainer>
+    );
+  }
 }
 
 Statistics.propTypes = {

@@ -8,10 +8,6 @@ export const ButtonsContainer = styled.div`
   flex-direction: column;
   gap: 40px;
 `;
-export const ButtonsTitle = styled.h2`
-  font-weight: 700;
-  font-size: 40px;
-`;
 
 export const ButtonsList = styled.ul`
   display: flex;

@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { Container } from './App.styled';
 import { FeedbackBtns } from 'components/FeedbackButtons/FeedbackButtons';
 import { Statistics } from 'components/Statistics/Statistics';
+import { Section } from 'components/SectionTitle/Section';
+import { Notification } from 'components/Notification/Notification';
 
 export class App extends Component {
   state = {
@@ -37,18 +39,37 @@ export class App extends Component {
 
   render() {
     const { goodFeedbacks, neutralFeedbacks, badFeedbacks } = this.state;
+    const totalFeedbacks = goodFeedbacks + neutralFeedbacks + badFeedbacks;
+    let positiveFeedbackPercentage = 0;
+    if (totalFeedbacks > 0) {
+      positiveFeedbackPercentage = Math.round(
+        (100 * goodFeedbacks) / totalFeedbacks
+      );
+    }
+
     return (
       <Container>
-        <FeedbackBtns
-          addGoodFeedback={this.addGoodFeedback}
-          addNeutralFeedback={this.addNeutralFeedback}
-          addBadFeedback={this.addBadFeedback}
-        ></FeedbackBtns>
-        <Statistics
-          goodFeedbacks={goodFeedbacks}
-          neutralFeedbacks={neutralFeedbacks}
-          badFeedbacks={badFeedbacks}
-        ></Statistics>
+        <Section title="Please leave your feedback">
+          <FeedbackBtns
+            addGoodFeedback={this.addGoodFeedback}
+            addNeutralFeedback={this.addNeutralFeedback}
+            addBadFeedback={this.addBadFeedback}
+          ></FeedbackBtns>
+        </Section>
+
+        <Section title="Statistics">
+          {totalFeedbacks > 0 ? (
+            <Statistics
+              goodFeedbacks={goodFeedbacks}
+              neutralFeedbacks={neutralFeedbacks}
+              badFeedbacks={badFeedbacks}
+              totalFeedbacks={totalFeedbacks}
+              positiveFeedbackPercentage={positiveFeedbackPercentage}
+            ></Statistics>
+          ) : (
+            <Notification message="There is no feedback"></Notification>
+          )}
+        </Section>
       </Container>
     );
   }
