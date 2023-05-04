@@ -37,15 +37,24 @@ export class App extends Component {
     });
   };
 
+  countTotalFeedback = () => {
+    const { goodFeedbacks, neutralFeedbacks, badFeedbacks } = this.state;
+    return goodFeedbacks + neutralFeedbacks + badFeedbacks;
+  };
+
+  countPositiveFeedbackPercentage = (goodFeedbacks, totalFeedbacks) => {
+    if (totalFeedbacks > 0) {
+      return Math.round((100 * goodFeedbacks) / totalFeedbacks);
+    }
+  };
+
   render() {
     const { goodFeedbacks, neutralFeedbacks, badFeedbacks } = this.state;
-    const totalFeedbacks = goodFeedbacks + neutralFeedbacks + badFeedbacks;
-    let positiveFeedbackPercentage = 0;
-    if (totalFeedbacks > 0) {
-      positiveFeedbackPercentage = Math.round(
-        (100 * goodFeedbacks) / totalFeedbacks
-      );
-    }
+    const totalFeedbacks = this.countTotalFeedback();
+    const positiveFeedbackPercentage = this.countPositiveFeedbackPercentage(
+      totalFeedbacks,
+      goodFeedbacks
+    );
 
     return (
       <Container>
