@@ -10,25 +10,20 @@ import {
 
 export class Statistics extends Component {
   render() {
-    const {
-      goodFeedbacks,
-      neutralFeedbacks,
-      badFeedbacks,
-      totalFeedbacks,
-      positiveFeedbackPercentage,
-    } = this.props;
+    const { good, neutral, bad, totalFeedbacks, positiveFeedbackPercentage } =
+      this.props;
 
     return (
       <StatisticsContainer>
         <StatisticsList>
           <StatisticsListItem>
-            <StatisticsText>Good: {goodFeedbacks}</StatisticsText>
+            <StatisticsText>Good: {good}</StatisticsText>
           </StatisticsListItem>
           <StatisticsListItem>
-            <StatisticsText>Neutral: {neutralFeedbacks}</StatisticsText>
+            <StatisticsText>Neutral: {neutral}</StatisticsText>
           </StatisticsListItem>
           <StatisticsListItem>
-            <StatisticsText>Bad: {badFeedbacks}</StatisticsText>
+            <StatisticsText>Bad: {bad}</StatisticsText>
           </StatisticsListItem>
           <StatisticsListItem>
             <StatisticsText>Total: {totalFeedbacks}</StatisticsText>
@@ -45,7 +40,7 @@ export class Statistics extends Component {
 }
 
 Statistics.propTypes = {
-  goodFeedbacks: PropTypes.number.isRequired,
-  neutralFeedbacks: PropTypes.number.isRequired,
-  badFeedbacks: PropTypes.number.isRequired,
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
 };
